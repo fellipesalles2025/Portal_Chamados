@@ -1,7 +1,8 @@
 package com.example.portalchamados.controller;
 
 import com.example.portalchamados.model.Chamado;
-import com.example.portalchamados.repository.ChamadoRepository;
+import com.example.portalchamados.service.ChamadoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,26 +11,21 @@ import java.util.List;
 @RequestMapping("/chamados")
 public class ChamadoController {
 
-    private final ChamadoRepository chamadoRepository;
+    @Autowired
+    private ChamadoService chamadoService;
 
-    public ChamadoController(ChamadoRepository chamadoRepository) {
-        this.chamadoRepository = chamadoRepository;
-    }
-
-    @CrossOrigin("*")
     @GetMapping
-    public List<Chamado> getAll() {
-        return chamadoRepository.findAll();
+    public List<Chamado> findAll(){
+        return chamadoService.findAll();
     }
 
-    @CrossOrigin("*")
     @PostMapping
-    public Chamado save(@RequestBody Chamado chamado) {
-        return chamadoRepository.save(chamado);
+    public Chamado save(@RequestBody Chamado chamado){
+        return chamadoService.save(chamado);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        chamadoRepository.deleteById(id);
+    public void delete(@PathVariable Long id){
+        chamadoService.delete(id);
     }
 }
