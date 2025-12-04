@@ -32,4 +32,11 @@ public class Chamado {
 
     @Column(name = "St_Chamado")
     private String status;
+
+    @PrePersist
+    public void prePersist() {
+        this.dataAbertura = LocalDate.now();
+        this.status = "Novo";
+        this.observacao = "";
+    }
 }

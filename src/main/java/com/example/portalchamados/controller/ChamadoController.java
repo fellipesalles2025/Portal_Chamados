@@ -20,6 +20,9 @@ public class ChamadoController {
         return chamadoService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Chamado findById(@PathVariable Long id){ return chamadoService.findById(id); }
+
     @PostMapping
     public Chamado save(@RequestBody Chamado chamado){
         return chamadoService.save(chamado);

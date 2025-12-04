@@ -17,6 +17,10 @@ public class ChamadoService {
         return chamadoRepository.findAll();
     }
 
+    public Chamado findById(Long id) {
+        return chamadoRepository.findById(id).orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+    }
+
     public Chamado save(Chamado chamado) {
         return chamadoRepository.save(chamado);
     }
