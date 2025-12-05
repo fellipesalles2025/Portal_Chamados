@@ -21,4 +21,7 @@ public class Usuario {
 
     @Column(name = "TL_usuario")
     private String telefone;
+
+    @Column(name = "PS_usuario")
+    private String password;
 }
