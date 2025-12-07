@@ -25,6 +25,11 @@ public class UsuarioController {
         return usuarioService.save(usuario);
     }
 
+    @PostMapping("/login")
+    public boolean login(@RequestBody Usuario usuario) {
+        return usuarioService.login(usuario.getEmail(), usuario.getPassword());
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         usuarioService.delete(id);

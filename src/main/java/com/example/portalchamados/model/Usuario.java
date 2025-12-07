@@ -19,6 +19,9 @@ public class Usuario {
     @Column(name = "EM_usuario")
     private String email;
 
+    @Column(name = "TP_usuario")
+    private String tipo;
+
     @Column(name = "TL_usuario")
     private String telefone;
 
